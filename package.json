@@ -1,0 +1,24 @@
+{
+  "name": "ape",
+  "version": "0.1.0",
+  "private": true,
+  "description": "APE (Agri-Tech Planning Engine) - Agricultural Management Platform",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:mobile": "turbo run dev --filter=@ape/mobile",
+    "dev:web": "turbo run dev --filter=@ape/web",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
