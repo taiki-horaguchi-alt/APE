@@ -14,3 +14,6 @@ coverage/
 *.swp
 *.swo
 *~
+client_projects/
+demo/
+apps/mobile/
