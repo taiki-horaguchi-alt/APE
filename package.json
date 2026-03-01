@@ -11,9 +11,14 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "validate": "node check-env.js",
+    "test:e2e": "playwright install && playwright test",
+    "validate:all": "npm run build && npm run validate && npm run test:e2e"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@supabase/supabase-js": "^2.97.0",
     "turbo": "^2.3.0",
     "typescript": "^5.7.0"
   },
