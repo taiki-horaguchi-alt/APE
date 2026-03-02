@@ -14,7 +14,8 @@
     "typecheck": "turbo run typecheck",
     "validate": "node check-env.js",
     "test:e2e": "playwright install && playwright test",
-    "validate:all": "npm run build && npm run validate && npm run test:e2e"
+    "validate:all": "npm run build && npm run validate && npm run test:e2e",
+    "seed:demo": "tsx scripts/seed-demo-data.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
