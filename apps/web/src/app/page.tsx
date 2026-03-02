@@ -168,11 +168,11 @@ export default function Home() {
               ワンストップで提供する農業経営支援プラットフォームです。
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="gap-2">
+              <Button href="/login" size="lg" className="gap-2">
                 無料で始める
                 <ArrowRight className="w-5 h-5" />
               </Button>
-              <Button variant="secondary" size="lg">
+              <Button href="/login" variant="secondary" size="lg">
                 デモを見る
               </Button>
             </div>
@@ -365,6 +365,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              href="/login"
               size="lg"
               className="bg-white text-primary-600 hover:bg-primary-50 gap-2"
             >

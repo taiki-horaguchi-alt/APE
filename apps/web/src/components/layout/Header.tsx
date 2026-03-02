@@ -40,10 +40,12 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
+            <Button href="/login" variant="ghost" size="sm">
               ログイン
             </Button>
-            <Button size="sm">無料で始める</Button>
+            <Button href="/login" size="sm">
+              無料で始める
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -76,10 +78,12 @@ export function Header() {
               </a>
             ))}
             <div className="px-6 py-4 flex flex-col gap-3 border-t border-neutral-100 mt-2">
-              <Button variant="outline" className="w-full">
+              <Button href="/login" variant="outline" className="w-full">
                 ログイン
               </Button>
-              <Button className="w-full">無料で始める</Button>
+              <Button href="/login" className="w-full">
+                無料で始める
+              </Button>
             </div>
           </nav>
         </div>
