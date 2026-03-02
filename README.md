@@ -213,7 +213,7 @@ npm run validate  # 環境変数の検証
 
 ## 👤 開発者
 
-**堀口　大樹** (Taiki Horaguchi)
+**洞口　大輝** (Taiki Horaguchi)
 
 - GitHub: [@taiki-horaguchi-alt](https://github.com/taiki-horaguchi-alt)
 - ポートフォリオ: [https://portfolio1-chi-rouge.vercel.app](https://portfolio1-chi-rouge.vercel.app)
@@ -222,11 +222,6 @@ npm run validate  # 環境変数の検証
 
 このプロジェクトはプライベートプロジェクトです。
 
-## 🙏 謝辞
-
-- Supabase チーム
-- Next.js チーム
-- Playwright チーム
 
 ## 📮 サポート
 
