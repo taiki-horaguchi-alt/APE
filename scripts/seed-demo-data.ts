@@ -10,12 +10,27 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
+import * as fs from 'fs'
+import * as path from 'path'
+
+// Load .env.local from apps/web
+const envPath = path.join(__dirname, '../apps/web/.env.local')
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf-8')
+  envContent.split('\n').forEach(line => {
+    const [key, value] = line.split('=')
+    if (key && value) {
+      process.env[key.trim()] = value.trim()
+    }
+  })
+}
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error('❌ Error: NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are required')
+  console.error('Make sure apps/web/.env.local exists with the required variables')
   process.exit(1)
 }
 
@@ -38,7 +53,7 @@ async function seedDemoData() {
       .insert([
         {
           name: 'デモファーム Aグループ',
-          industry: 'agriculture',
+          description: 'デモンストレーション用の農業経営組織',
         }
       ])
       .select('id')

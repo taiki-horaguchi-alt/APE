@@ -67,47 +67,42 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_xxxxx
 ```
 
-### ステップ 2: デモデータを生成
+### ステップ 2: アプリケーションを起動
 
 ```bash
-# プロジェクトルートで実行
-npm run seed:demo
+# Web アプリケーションを起動
+npm run dev:web
 ```
 
-**出力例:**
+サーバーが起動したら、ブラウザで `http://localhost:3003` にアクセスしてください。
+
+### ステップ 3: テストユーザーでログイン
+
 ```
-🌱 APE Demo Data Seeding Started...
+Email: demo@example.com
+Password: DemoPassword123!
+```
 
-📊 Creating demo organization...
-✅ Organization created: 550e8400-e29b-41d4-a716-446655440000
+> ⚠️ **注**: ローカル環境でテストユーザーが作成されていない場合は、Supabase ダッシュボード > Authentication > Users から手動で作成してください。
 
-🌾 Creating cultivation records...
-✅ 4 cultivation records created
+### ステップ 4: デモデータを生成
 
-🏪 Creating buyers (trading partners)...
-✅ 4 buyers created
+**方法 1: SQL スクリプトから生成（推奨）**
 
-💬 Creating messages...
-✅ 3 messages created
+1. [Supabase ダッシュボード](https://app.supabase.com) にアクセス
+2. プロジェクトを選択 → 左メニュー「SQL Editor」
+3. 「新規クエリ」をクリック
+4. `scripts/seed-demo-data.sql` の内容をコピーしてペースト
+5. 「RUN」ボタンをクリック
 
-✅ Creating tasks...
-✅ 4 tasks created
-
-📄 Creating proposals...
-✅ 2 proposals created
-
-🧾 Creating invoices...
-✅ 2 invoices created
-
-✨ Demo data seeding completed successfully!
-
-📝 Summary:
-  - Organization ID: 550e8400-e29b-41d4-a716-446655440000
-  - Cultivation Records: 4
-  - Buyers: 4
-  - Tasks: 4
-
-🚀 You can now log in and explore the demo data!
+**結果:**
+```
+✅ 1 organizations
+✅ 4 cultivation_records
+✅ 4 buyers
+✅ 4 tasks
+✅ 2 proposals
+✅ 2 invoices
 ```
 
 ---
