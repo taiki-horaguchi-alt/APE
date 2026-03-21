@@ -1,34 +1,58 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { Leaf, Mail, Loader2 } from 'lucide-react'
+import { Leaf, Mail, Lock, Loader2 } from 'lucide-react'
 
 export default function LoginPage() {
+  const router = useRouter()
+  const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
 
   const supabase = createClient()
 
-  async function handleEmailLogin(e: React.FormEvent) {
+  async function handleEmailAuth(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError('')
     setMessage('')
 
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
-      })
+      if (isSignUp) {
+        // Sign up with password
+        const { data, error: signUpError } = await supabase.auth.signUp({
+          email,
+          password,
+        })
 
-      if (error) throw error
+        if (signUpError) throw signUpError
+        if (!data.user) throw new Error('アカウント作成に失敗しました')
 
-      setMessage('ログインリンクをメールに送信しました。メールを確認してください。')
+        // Auto-login after signup
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        })
+
+        if (signInError) throw signInError
+
+        router.push('/onboarding')
+      } else {
+        // Sign in with password
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        })
+
+        if (signInError) throw signInError
+
+        router.push('/dashboard')
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'エラーが発生しました')
     } finally {
@@ -64,11 +88,35 @@ export default function LoginPage() {
             <Leaf className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-neutral-900">APE にログイン・登録</h1>
-          <p className="text-neutral-500 mt-2">メールアドレスで簡単にログイン・新規登録</p>
+          <p className="text-neutral-500 mt-2">メールアドレスとパスワードで簡単アクセス</p>
         </div>
 
         {/* Login Card */}
         <div className="bg-white rounded-2xl shadow-lg border border-neutral-100 p-8">
+          {/* Tab Buttons */}
+          <div className="flex gap-2 mb-6 bg-neutral-100 p-1 rounded-lg">
+            <button
+              onClick={() => setIsSignUp(false)}
+              className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
+                !isSignUp
+                  ? 'bg-white text-primary-600 shadow-sm'
+                  : 'text-neutral-600 hover:text-neutral-900'
+              }`}
+            >
+              ログイン
+            </button>
+            <button
+              onClick={() => setIsSignUp(true)}
+              className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors ${
+                isSignUp
+                  ? 'bg-white text-primary-600 shadow-sm'
+                  : 'text-neutral-600 hover:text-neutral-900'
+              }`}
+            >
+              新規登録
+            </button>
+          </div>
+
           {/* Google Login */}
           <button
             onClick={handleGoogleLogin}
@@ -106,12 +154,13 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Email Login */}
-          <form onSubmit={handleEmailLogin}>
+          {/* Email & Password Form */}
+          <form onSubmit={handleEmailAuth}>
+            {/* Email */}
             <label className="block text-sm font-medium text-neutral-700 mb-2">
               メールアドレス
             </label>
-            <div className="relative">
+            <div className="relative mb-4">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
               <input
                 type="email"
@@ -122,15 +171,36 @@ export default function LoginPage() {
                 className="w-full pl-10 pr-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
               />
             </div>
+
+            {/* Password */}
+            <label className="block text-sm font-medium text-neutral-700 mb-2">
+              パスワード
+            </label>
+            <div className="relative mb-6">
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder={isSignUp ? '8文字以上のパスワード' : 'パスワード'}
+                required
+                minLength={isSignUp ? 8 : undefined}
+                className="w-full pl-10 pr-4 py-3 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors"
+              />
+            </div>
+
+            {/* Submit Button */}
             <button
               type="submit"
-              disabled={loading || !email}
-              className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors disabled:opacity-50 font-medium"
+              disabled={loading || !email || !password}
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors disabled:opacity-50 font-medium"
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
+              ) : isSignUp ? (
+                '新規登録'
               ) : (
-                'ログインリンクを送信'
+                'ログイン'
               )}
             </button>
           </form>

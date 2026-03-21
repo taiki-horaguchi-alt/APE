@@ -1,0 +1,59 @@
+{
+  "common": {
+    "logout": "Keluar",
+    "login": "Masuk",
+    "password": "Kata sandi",
+    "email": "Email",
+    "home": "Beranda",
+    "profile": "Profil",
+    "settings": "Pengaturan",
+    "language": "Bahasa",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "error": "Kesalahan"
+  },
+  "dashboard": {
+    "title": "Dasbor",
+    "welcome": "Selamat datang",
+    "tasks": "Tugas",
+    "reports": "Laporan",
+    "materials": "Bahan",
+    "weather": "Cuaca",
+    "emergency": "Darurat"
+  },
+  "tasks": {
+    "title": "Petunjuk Kerja",
+    "viewInstructions": "Lihat petunjuk",
+    "markComplete": "Tandai selesai",
+    "step": "Langkah"
+  },
+  "reports": {
+    "title": "Laporan Harian",
+    "submitReport": "Kirim laporan",
+    "weather": "Cuaca",
+    "hoursWorked": "Jam kerja",
+    "notes": "Catatan"
+  },
+  "materials": {
+    "title": "Basis Data Material",
+    "scanQR": "Pindai QR",
+    "safetyInformation": "Informasi keselamatan",
+    "usageInstructions": "Petunjuk penggunaan"
+  },
+  "emergency": {
+    "title": "Kontak Darurat",
+    "call": "Hubungi",
+    "sendLocation": "Kirim lokasi",
+    "addContact": "Tambah kontak"
+  },
+  "weather": {
+    "title": "Cuaca",
+    "temperature": "Suhu",
+    "humidity": "Kelembaban",
+    "warning": "Peringatan"
+  }
+}

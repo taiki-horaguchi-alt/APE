@@ -29,6 +29,8 @@ export default function OnboardingPage() {
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showDemoDataPrompt, setShowDemoDataPrompt] = useState(false)
+  const [demoDataLoading, setDemoDataLoading] = useState(false)
 
   const [farmName, setFarmName] = useState('')
   const [selectedCrops, setSelectedCrops] = useState<string[]>([])
@@ -43,6 +45,22 @@ export default function OnboardingPage() {
     )
   }
 
+  async function handleLoadDemoData() {
+    setDemoDataLoading(true)
+    try {
+      const response = await fetch('/api/demo/seed', { method: 'POST' })
+      if (!response.ok) throw new Error('デモデータの読み込みに失敗しました')
+      router.push('/dashboard')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'デモデータの読み込みに失敗しました')
+      setDemoDataLoading(false)
+    }
+  }
+
+  function handleSkipDemo() {
+    router.push('/dashboard')
+  }
+
   async function handleComplete() {
     setLoading(true)
     setError('')
@@ -51,21 +69,38 @@ export default function OnboardingPage() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) throw new Error('ログインが必要です')
 
+      // Step 1: Create organization
+      const { data: org, error: orgError } = await supabase
+        .from('organizations')
+        .insert({
+          name: farmName,
+          description: `${farmName}の農業経営組織`,
+        })
+        .select()
+        .single()
+
+      if (orgError) throw orgError
+      if (!org) throw new Error('組織の作成に失敗しました')
+
+      // Step 2: Create user profile with organization_id and role
       const { error: upsertError } = await supabase
         .from('users')
         .upsert({
           id: user.id,
+          organization_id: org.id,
           farm_name: farmName,
           interested_crops: selectedCrops,
           labor_type: laborType,
           work_hours: workHours,
+          role: 'owner',
           onboarding_completed: true,
           updated_at: new Date().toISOString(),
         })
 
       if (upsertError) throw upsertError
 
-      router.push('/dashboard')
+      // Show demo data prompt instead of immediately redirecting
+      setShowDemoDataPrompt(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'エラーが発生しました')
     } finally {
@@ -250,6 +285,39 @@ export default function OnboardingPage() {
             )}
           </div>
         </div>
+
+        {/* Demo Data Prompt Modal */}
+        {showDemoDataPrompt && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-md p-8">
+              <h3 className="text-xl font-bold text-neutral-900 mb-3">
+                デモデータを読み込みますか？
+              </h3>
+              <p className="text-neutral-600 mb-6">
+                サンプルの栽培記録、取引先、タスク、提案書などを自動で作成します。アプリの機能を試すのに便利です。
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={handleLoadDemoData}
+                  disabled={demoDataLoading}
+                  className="flex-1 bg-primary-500 text-white px-4 py-3 rounded-lg hover:bg-primary-600 transition-colors disabled:opacity-50 font-medium flex items-center justify-center gap-2"
+                >
+                  {demoDataLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : null}
+                  読み込む
+                </button>
+                <button
+                  onClick={handleSkipDemo}
+                  disabled={demoDataLoading}
+                  className="flex-1 border border-neutral-300 text-neutral-700 px-4 py-3 rounded-lg hover:bg-neutral-50 transition-colors disabled:opacity-50 font-medium"
+                >
+                  スキップ
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

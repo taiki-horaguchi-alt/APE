@@ -1,0 +1,59 @@
+{
+  "common": {
+    "logout": "Logout",
+    "login": "Login",
+    "password": "Password",
+    "email": "Email",
+    "home": "Home",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "error": "Error"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "tasks": "Tasks",
+    "reports": "Reports",
+    "materials": "Materials",
+    "weather": "Weather",
+    "emergency": "Emergency"
+  },
+  "tasks": {
+    "title": "Work Instructions",
+    "viewInstructions": "View instructions",
+    "markComplete": "Mark complete",
+    "step": "Step"
+  },
+  "reports": {
+    "title": "Daily Report",
+    "submitReport": "Submit report",
+    "weather": "Weather",
+    "hoursWorked": "Hours worked",
+    "notes": "Notes"
+  },
+  "materials": {
+    "title": "Materials Database",
+    "scanQR": "Scan QR code",
+    "safetyInformation": "Safety information",
+    "usageInstructions": "Usage instructions"
+  },
+  "emergency": {
+    "title": "Emergency Contacts",
+    "call": "Call",
+    "sendLocation": "Send location",
+    "addContact": "Add contact"
+  },
+  "weather": {
+    "title": "Weather",
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "warning": "Warning"
+  }
+}

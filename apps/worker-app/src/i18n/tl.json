@@ -1,0 +1,59 @@
+{
+  "common": {
+    "logout": "Maglogout",
+    "login": "Maglogin",
+    "password": "Password",
+    "email": "Email",
+    "home": "Tahanan",
+    "profile": "Propesyon",
+    "settings": "Mga setting",
+    "language": "Wika",
+    "back": "Bumalik",
+    "next": "Susunod",
+    "save": "Ipon",
+    "cancel": "Kanselahin",
+    "delete": "Burahin",
+    "edit": "I-edit",
+    "error": "Error"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Maligayang pagdating",
+    "tasks": "Mga gawain",
+    "reports": "Mga ulat",
+    "materials": "Mga materyales",
+    "weather": "Panahon",
+    "emergency": "Emergency"
+  },
+  "tasks": {
+    "title": "Mga Instruction sa Trabaho",
+    "viewInstructions": "Tingnan ang mga instruction",
+    "markComplete": "Markahan na kumpleto",
+    "step": "Hakbang"
+  },
+  "reports": {
+    "title": "Pang-araw-araw na Ulat",
+    "submitReport": "Ipadala ang ulat",
+    "weather": "Panahon",
+    "hoursWorked": "Oras ng trabaho",
+    "notes": "Mga tala"
+  },
+  "materials": {
+    "title": "Database ng Materyales",
+    "scanQR": "I-scan ang QR",
+    "safetyInformation": "Impormasyon sa kaligtasan",
+    "usageInstructions": "Mga instruction sa paggamit"
+  },
+  "emergency": {
+    "title": "Emergency Contacts",
+    "call": "Tawagan",
+    "sendLocation": "Ipadala ang lokasyon",
+    "addContact": "Magdagdag ng contact"
+  },
+  "weather": {
+    "title": "Panahon",
+    "temperature": "Temperatura",
+    "humidity": "Kalamigan",
+    "warning": "Babala"
+  }
+}

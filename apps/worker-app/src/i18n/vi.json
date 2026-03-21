@@ -1,0 +1,59 @@
+{
+  "common": {
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập",
+    "password": "Mật khẩu",
+    "email": "Email",
+    "home": "Trang chủ",
+    "profile": "Hồ sơ",
+    "settings": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Chỉnh sửa",
+    "error": "Lỗi"
+  },
+  "dashboard": {
+    "title": "Bảng điều khiển",
+    "welcome": "Chào mừng",
+    "tasks": "Công việc",
+    "reports": "Báo cáo",
+    "materials": "Vật liệu",
+    "weather": "Thời tiết",
+    "emergency": "Khẩn cấp"
+  },
+  "tasks": {
+    "title": "Hướng dẫn công việc",
+    "viewInstructions": "Xem hướng dẫn",
+    "markComplete": "Đánh dấu hoàn thành",
+    "step": "Bước"
+  },
+  "reports": {
+    "title": "Báo cáo hàng ngày",
+    "submitReport": "Gửi báo cáo",
+    "weather": "Thời tiết",
+    "hoursWorked": "Giờ làm việc",
+    "notes": "Ghi chú"
+  },
+  "materials": {
+    "title": "Cơ sở dữ liệu vật liệu",
+    "scanQR": "Quét mã QR",
+    "safetyInformation": "Thông tin an toàn",
+    "usageInstructions": "Hướng dẫn sử dụng"
+  },
+  "emergency": {
+    "title": "Danh bạ khẩn cấp",
+    "call": "Gọi điện",
+    "sendLocation": "Gửi vị trí",
+    "addContact": "Thêm liên hệ"
+  },
+  "weather": {
+    "title": "Thời tiết",
+    "temperature": "Nhiệt độ",
+    "humidity": "Độ ẩm",
+    "warning": "Cảnh báo"
+  }
+}

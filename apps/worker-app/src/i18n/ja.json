@@ -1,0 +1,59 @@
+{
+  "common": {
+    "logout": "ログアウト",
+    "login": "ログイン",
+    "password": "パスワード",
+    "email": "メール",
+    "home": "ホーム",
+    "profile": "プロフィール",
+    "settings": "設定",
+    "language": "言語",
+    "back": "戻る",
+    "next": "次へ",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "error": "エラー"
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "ようこそ",
+    "tasks": "作業指示",
+    "reports": "日報",
+    "materials": "資材データベース",
+    "weather": "天候",
+    "emergency": "緊急連絡"
+  },
+  "tasks": {
+    "title": "作業指示",
+    "viewInstructions": "指示を表示",
+    "markComplete": "完了を記録",
+    "step": "ステップ"
+  },
+  "reports": {
+    "title": "日報入力",
+    "submitReport": "報告を送信",
+    "weather": "天候",
+    "hoursWorked": "就業時間",
+    "notes": "備考"
+  },
+  "materials": {
+    "title": "資材・農薬データベース",
+    "scanQR": "QRコードをスキャン",
+    "safetyInformation": "安全情報",
+    "usageInstructions": "使用方法"
+  },
+  "emergency": {
+    "title": "緊急連絡先",
+    "call": "電話",
+    "sendLocation": "位置情報を送信",
+    "addContact": "連絡先を追加"
+  },
+  "weather": {
+    "title": "天候",
+    "temperature": "気温",
+    "humidity": "湿度",
+    "warning": "警報"
+  }
+}

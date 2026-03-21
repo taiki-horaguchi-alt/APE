@@ -178,10 +178,38 @@ Supabase 設定
 - [**COMPLETION_STATUS.md**](./COMPLETION_STATUS.md) - プロジェクト完成度レポート
 - [**NEXT_STEPS.md**](./NEXT_STEPS.md) - 次のステップガイド
 
+## 🔑 認証
+
+### 認証方式
+APE は複数の認証方式をサポートしています：
+
+1. **メール/パスワード認証**（推奨）
+   - メールアドレスとパスワードで新規登録・ログイン
+   - パスワード最小長：8文字
+
+2. **Google OAuth**
+   - Google アカウントによる簡単ログイン
+
+### デモアカウント
+
+開発・テスト用の固定デモアカウントが用意されています：
+
+```
+Email: demo@ape-demo.com
+Password: DemoPassword123
+```
+
+**ログイン後の流れ**:
+1. ログインページでメール/パスワードを入力
+2. ダッシュボードにリダイレクト
+3. サンプルの栽培記録、取引先、タスクが表示されます
+
+> ⚠️ デモアカウントは開発・評価用です。本番環境では使用しないでください。
+
 ## 🔐 セキュリティ
 
 ### 実装済み
-- ✅ Supabase Authentication (OAuth)
+- ✅ Supabase Authentication (メール/パスワード + OAuth)
 - ✅ Row Level Security (RLS) ポリシー
 - ✅ マルチテナント対応（organization_id による分離）
 - ✅ HTTPS 通信
